@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=BackGround1
-comment0.text=\r\n\ Driver\ Class\ /\ Background\ Class\r\n\ \r\n\ Sethumi\ Hapuarachchi\r\n\ June\ 4,\ 2024\r\n\ ICS\ 4U1\r\n\ Donkey\ Kong\ Game\r\n\ \r\n\ What\ have\ I\ done\r\n\ -\ Slightly\ changed\ some\ positions\r\n\ \r\n\ What\ to\ fix\r\n\ -\ Speed\ of\ the\ barrels\ \r\n\ -\ Jankiness\ of\ the\ animation\r\n
+comment0.text=\n\ Driver\ Class\ /\ Background\ Class\n\ \n\ Sethumi\ Hapuarachchi\n\ June\ 4,\ 2024\n\ ICS\ 4U1\n\ Donkey\ Kong\ Game\n\ \n\ What\ have\ I\ done\n\ -\ Slightly\ changed\ some\ positions\n\ \n\ What\ to\ fix\n\ -\ Speed\ of\ the\ barrels\ \n\ -\ Jankiness\ of\ the\ animation\n
 comment1.params=
 comment1.target=BackGround1()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ BackGround1.\r\n\ \r\n
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ BackGround1.\n\ \n
 numComments=2
