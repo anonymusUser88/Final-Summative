@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=BackGround1
+comment0.text=\r\n\ Driver\ Class\ /\ Background\ Class\r\n\ \r\n\ Sethumi\ Hapuarachchi\r\n\ June\ 4,\ 2024\r\n\ ICS\ 4U1\r\n\ Donkey\ Kong\ Game\r\n\ \r\n\ What\ have\ I\ done\r\n\ -\ Slightly\ changed\ some\ positions\r\n\ \r\n\ What\ to\ fix\r\n\ -\ Speed\ of\ the\ barrels\ \r\n\ -\ Jankiness\ of\ the\ animation\r\n
+comment1.params=
+comment1.target=BackGround1()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ BackGround1.\r\n\ \r\n
+numComments=2
