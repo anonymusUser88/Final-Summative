@@ -2,6 +2,7 @@ import greenfoot.*;
 public class Mario extends Actor
 {
     int speed = 9;
+    int xSpeed = 0;
     String Marioimage = "mariopixelCopy.png";
     long lastTime;
     int Lives = 3;
