@@ -15,12 +15,12 @@ public class Finish extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1500, 1000, 1); 
-        addObject(new Floor2(), 125, 1000);
-        addObject(new Floor2(), 375, 1000);
-        addObject(new Floor2(), 625, 1000);
-        addObject(new Floor2(), 875, 1000);
-        addObject(new Floor2(), 1125, 1000);
-        addObject(new Floor2(), 1375, 1000);
+        addObject(new Floor(1), 125, 1000);
+        addObject(new Floor(1), 375, 1000);
+        addObject(new Floor(1), 625, 1000);
+        addObject(new Floor(1), 875, 1000);
+        addObject(new Floor(1), 1125, 1000);
+        addObject(new Floor(1), 1375, 1000);
         addObject(new Princess(), 145, 940);
         addObject(new Mario(), 85, 940);
         showText("YOU WIN", 750, 600);
