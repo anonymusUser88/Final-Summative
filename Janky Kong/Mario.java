@@ -3,7 +3,7 @@ public class Mario extends Actor
 {
     int speed = 9;
     int xSpeed = 0;
-    String Marioimage = "mariopixelCopy.png";
+    String Marioimage = "mario-standing.png";
     long lastTime;
     int Lives = 3;
     public void act() 
@@ -46,20 +46,20 @@ public class Mario extends Actor
             move(-5);
             if(System.currentTimeMillis() - lastTime > 500 && Marioimage.equals("mariopixelCopy.png"))
             {
-                Marioimage = "marioleft.png";
-                setImage("marioleft.png");
+                Marioimage = "mario-left.png";
+                setImage("mario-left.png");
                 lastTime = System.currentTimeMillis();
             } else {
                 if(System.currentTimeMillis() - lastTime > 500)
                 {
-                    Marioimage = "mariopixelCopy.png";
-                    setImage("mariopixelCopy.png");
+                    Marioimage = "mario-right.png";
+                    setImage("mario-right.png");
                     lastTime = System.currentTimeMillis();
                 }
             } 
             
            
-            setImage("mariopixelCopy.png");
+            setImage("mario-left.png");
             while(isTouching(Floor.class))
             {
                move(1);
@@ -68,13 +68,13 @@ public class Mario extends Actor
             if(Greenfoot.isKeyDown("right"))
             {
                move(5);
-               setImage("mariopixel.png");
+               setImage("mario-right.png");
                 while(isTouching(Floor.class))
                 {
                   move(-1);
                }
             } else{
-                setImage("mario-big.png");
+                setImage("mario-standing.png");
             }
         }
         if(Greenfoot.isKeyDown("down"))
