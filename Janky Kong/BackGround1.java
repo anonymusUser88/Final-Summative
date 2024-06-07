@@ -11,6 +11,9 @@ public class BackGround1 extends World
     /**
      * Constructor for objects of class BackGround1.
      */
+    
+
+
     public BackGround1()
     {    
         super(1050, 900, 1);
