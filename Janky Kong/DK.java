@@ -1,7 +1,9 @@
 import greenfoot.*;
 public class DK extends Actor
 {
-    long lastTime;
+    long lastTimeSinceBarrelThrown; // for actually throwing the barrel
+    long lastTimeSinceDKMoves; // for the animation
+    
     public void act() 
     {
         if(isTouching(Mario.class))
@@ -10,10 +12,17 @@ public class DK extends Actor
 
             Greenfoot.stop();
         }
-        if(System.currentTimeMillis() - lastTime > 3000)
+        if(System.currentTimeMillis() - lastTimeSinceDKMoves > 2000)
         {
-            lastTime = System.currentTimeMillis();
-            getWorld().addObject(new Barrel(), getX(), getY());
+            lastTimeSinceDKMoves = System.currentTimeMillis();
+            setImage("donkey-kong_standing.png");
         }
-    }    
+        if(System.currentTimeMillis() - lastTimeSinceBarrelThrown > 2500)
+        {
+            setImage("Donkey_Kong_Throwing.png");
+            lastTimeSinceBarrelThrown = System.currentTimeMillis();
+            getWorld().addObject(new Barrel(), getX(), getY());
+            
+        }   
+    }
 }
