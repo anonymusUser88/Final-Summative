@@ -21,7 +21,6 @@ public class BackGround1 extends World
         addObject(new DK(), 200, 150); // donkey kong
         
         // top left
-
         addObject(new Floor(1), 125, 219);
         addObject(new Floor(1), 25, 219);
         addObject(new Floor(1), 225, 219);
@@ -34,24 +33,32 @@ public class BackGround1 extends World
         
         
         // top right
-        addObject(new Floor(-1), 625, 475);
-        addObject(new Floor(-1), 875, 475);
-        addObject(new Floor(-1), 1125, 475);
-        addObject(new Floor(-1), 1375, 475);
+
+        addObject(new Floor(-1), 1000, 525);
+        addObject(new Floor(-1), 900, 525 + 5);
+        addObject(new Floor(-1), 800, 525 + 10);
+        addObject(new Floor(-1), 700, 525 + 15);
+        addObject(new Floor(-1), 600, 525 + 20);
+        addObject(new Floor(-1), 500, 525 + 25);
+        addObject(new Floor(-1), 400, 525 + 30);
+        addObject(new Floor(-1), 300, 525 + 35);
+        addObject(new Floor(-1), 200, 525 + 40);
+
         
         // bottom left
-        addObject(new Floor(1), 125, 700);
-        addObject(new Floor(1), 375, 700);
-        addObject(new Floor(1), 625, 700);
+        addObject(new Floor(1), 50, 850 + 5);
+        addObject(new Floor(1), 150, 850 + 10);
+        addObject(new Floor(1), 250, 850 + 15);
+        addObject(new Floor(1), 350, 850 + 20);
+        addObject(new Floor(1), 450, 850 + 25);
+        addObject(new Floor(1), 550, 850 + 30);
+        addObject(new Floor(1), 650, 850 + 35);
+        addObject(new Floor(1), 750, 850 + 40);
+        addObject(new Floor(1), 850, 850 + 45);
+        addObject(new Floor(1), 950, 850 + 50);
+        addObject(new Floor(1), 1050, 850 + 55);
+
         
-        // ground floor
-        addObject(new Floor(-1), 125, 1000);
-        addObject(new Floor(-1), 375, 1000);
-        addObject(new Floor(-1), 625, 1000);
-        addObject(new Floor(-1), 875, 1000);
-        addObject(new Floor(-1), 1125, 1000);
-        addObject(new Floor(-1), 1375, 1000);
-        
-        addObject(new Mario(), 125, 850); // mario
+        addObject(new Mario(), 950, 850); // mario
     }
 }
