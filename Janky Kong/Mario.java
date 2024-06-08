@@ -5,6 +5,7 @@ public class Mario extends Actor {
     int Lives = 3;
     String Marioimage = "mario_idle_right.png";
     long lastTime;
+    //
 
     public Mario() {
         setImageScaled(Marioimage);
