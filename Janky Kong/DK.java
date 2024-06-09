@@ -6,6 +6,7 @@ public class DK extends Actor
     
     public DK()
     {
+        scaleImage();
     }
     
     public void act() 
