@@ -18,10 +18,17 @@ public class Floor extends Actor
     public Floor(int direction)
     {
         this.direction = direction;
+        scaleImage();
     }
     
     public void act() 
     {
         // Add your action code here.
     }    
+    
+    public void scaleImage() {
+        GreenfootImage image = getImage();  
+        image.scale(100, 30);
+        setImage(image);
+    }
 }

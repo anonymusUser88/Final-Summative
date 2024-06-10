@@ -51,7 +51,7 @@ public class Mario extends Actor
         if(Greenfoot.isKeyDown("left"))
         {
             move(-5);
-            if(System.currentTimeMillis() - lastTime > 500 && Marioimage.equals("mariopixelCopy.png"))
+            if(System.currentTimeMillis() - lastTime > 500 && Marioimage.equals("Mario_Standing_Right.png"))
             {
                 Marioimage = "Mario_Jumping_Left.png";
                 setImage("Mario_Jumping_Left.png");

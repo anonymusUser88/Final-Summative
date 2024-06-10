@@ -8,6 +8,10 @@ import greenfoot.*;
  */
 public class Barrel extends Actor
 {
+    
+    public Barrel() {
+        scaleImage();
+    }
     public void act() 
     {
         if(isAtEdge())
@@ -17,14 +21,20 @@ public class Barrel extends Actor
         else
         {
           setLocation(getX(), getY() + 3);
-
           while(isTouching(Floor.class))
           {
             Floor f = (Floor)getOneIntersectingObject(Floor.class);
-            setLocation(getX() + 3*(f.direction), getY() - 3);
-            turn(8*f.direction);
+            setLocation(getX() + 2*(f.direction), getY() - 3);
+            turn(3*f.direction);
           }
+
        }
+    }
+    
+    public void scaleImage() {
+        GreenfootImage image = getImage();  
+        image.scale(65, 65);
+        setImage(image);
     }
 }
  
