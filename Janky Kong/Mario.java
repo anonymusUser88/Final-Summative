@@ -18,9 +18,22 @@ public class Mario extends Actor
         }
         if(Lives == 0)
         {
-            getWorld().showText("GAME OVER", 750, 600);
-            Greenfoot.stop();
-        }
+             long  TimeSinceGameOver = System.currentTimeMillis();
+      int countdown = 15000;
+     getWorld().showText("GAME OVER", 750, 600);
+      GreenfootSound music = new GreenfootSound("GAMEOVERSOUND.mp3");
+    music.play(); 
+    int s = 2;
+    turn(2*s); 
+if(System.currentTimeMillis() - TimeSinceGameOver > countdown){
+ turn(0);
+  setImage("Mario_GameOverFall.png");
+      //  scaleImage();
+Greenfoot.stop(); 
+
+}
+}
+
         if(speed > 0)
         {
             while(isTouching(Floor.class))
@@ -58,13 +71,16 @@ public class Mario extends Actor
                 }
             } 
             
-           
             setImage("mario-left.png");
             while(isTouching(Floor.class))
             {
                move(1);
             } 
-        } else {
+ 
+        }             else if(Lives == 0){
+        setImage("Mario_GameOver.png");
+        //scaleImage();
+}else {
             if(Greenfoot.isKeyDown("right"))
             {
                move(5);

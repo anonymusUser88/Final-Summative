@@ -10,6 +10,7 @@ public class Barrel extends Actor
 {
     public void act() 
     {
+        
         if(isAtEdge())
         {
             getWorld().removeObject(this);
@@ -24,6 +25,7 @@ public class Barrel extends Actor
             setLocation(getX() + 3*(f.direction), getY() - 3);
             turn(8*f.direction);
           }
+
        }
     }
 }
