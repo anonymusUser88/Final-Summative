@@ -43,6 +43,7 @@ dependency9.from=DK
 dependency9.to=Mario
 dependency9.type=UsesDependency
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 editor.fx.0.height=737
 editor.fx.0.width=814
 editor.fx.0.x=100
@@ -54,6 +55,13 @@ editor.fx.0.width=816
 editor.fx.0.x=254
 editor.fx.0.y=0
 height=830
+>>>>>>> Stashed changes
+=======
+editor.fx.0.height=0
+editor.fx.0.width=0
+editor.fx.0.x=0
+editor.fx.0.y=0
+height=1084
 >>>>>>> Stashed changes
 package.numDependencies=12
 package.numTargets=7
@@ -129,9 +137,13 @@ target7.x=70
 target7.y=70
 version=3.1.0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 width=1316
 =======
 width=1550
+>>>>>>> Stashed changes
+=======
+width=1316
 >>>>>>> Stashed changes
 world.lastInstantiated=BackGround1
 xPosition=100
