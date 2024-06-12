@@ -21,42 +21,42 @@ public class BackGround1 extends World
         addObject(new DK(), 200, 150); // donkey kong
         
         // top left
-        addObject(new Floor(1), 125, 219);
-        addObject(new Floor(1), 25, 219);
-        addObject(new Floor(1), 225, 219);
-        addObject(new Floor(1), 325, 219 + 10);
-        addObject(new Floor(1), 425, 219 + 15);
-        addObject(new Floor(1), 525, 219 + 20);
-        addObject(new Floor(1), 625, 219 + 25);
-        addObject(new Floor(1), 725, 219 + 30);
-        addObject(new Floor(1), 825, 219 + 35);
+        addObject(new Floor(1, -20), 125, 219);
+        addObject(new Floor(1, -20), 25, 219);
+        addObject(new Floor(1, -20), 225, 219);
+        addObject(new Floor(1, -20), 325, 219 + 10);
+        addObject(new Floor(1, -20), 425, 219 + 15);
+        addObject(new Floor(1, -20), 525, 219 + 20);
+        addObject(new Floor(1, -20), 625, 219 + 25);
+        addObject(new Floor(1, -20), 725, 219 + 30);
+        addObject(new Floor(1, -20), 825, 219 + 35);
         
         
         // top right
 
-        addObject(new Floor(-1), 1000, 525);
-        addObject(new Floor(-1), 900, 525 + 5);
-        addObject(new Floor(-1), 800, 525 + 10);
-        addObject(new Floor(-1), 700, 525 + 15);
-        addObject(new Floor(-1), 600, 525 + 20);
-        addObject(new Floor(-1), 500, 525 + 25);
-        addObject(new Floor(-1), 400, 525 + 30);
-        addObject(new Floor(-1), 300, 525 + 35);
-        addObject(new Floor(-1), 200, 525 + 40);
+        addObject(new Floor(-1, -27), 1000, 525);
+        addObject(new Floor(-1, -20), 900, 525 + 5);
+        addObject(new Floor(-1, -20), 800, 525 + 10);
+        addObject(new Floor(-1, -20), 700, 525 + 15);
+        addObject(new Floor(-1, -20), 600, 525 + 20);
+        addObject(new Floor(-1, -20), 500, 525 + 25);
+        addObject(new Floor(-1, -20), 400, 525 + 30);
+        addObject(new Floor(-1, -20), 300, 525 + 35);
+        addObject(new Floor(-1, -20), 200, 525 + 40);
 
         
         // bottom left
-        addObject(new Floor(1), 50, 850 + 5);
-        addObject(new Floor(1), 150, 850 + 10);
-        addObject(new Floor(1), 250, 850 + 15);
-        addObject(new Floor(1), 350, 850 + 20);
-        addObject(new Floor(1), 450, 850 + 25);
-        addObject(new Floor(1), 550, 850 + 30);
-        addObject(new Floor(1), 650, 850 + 35);
-        addObject(new Floor(1), 750, 850 + 40);
-        addObject(new Floor(1), 850, 850 + 45);
-        addObject(new Floor(1), 950, 850 + 50);
-        addObject(new Floor(1), 1050, 850 + 55);
+        addObject(new Floor(1, -27), 50, 850 + 5);
+        addObject(new Floor(1, -20), 150, 850 + 10);
+        addObject(new Floor(1, -20), 250, 850 + 15);
+        addObject(new Floor(1, -20), 350, 850 + 20);
+        addObject(new Floor(1, -20), 450, 850 + 25);
+        addObject(new Floor(1, -20), 550, 850 + 30);
+        addObject(new Floor(1, -20), 650, 850 + 35);
+        addObject(new Floor(1, -20), 750, 850 + 40);
+        addObject(new Floor(1, -20), 850, 850 + 45);
+        addObject(new Floor(1, -20), 950, 850 + 50);
+        addObject(new Floor(1, -20), 1050, 850 + 55);
 
         
         addObject(new Mario(), 950, 850); // mario

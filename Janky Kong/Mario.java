@@ -17,7 +17,7 @@ public class Mario extends Actor {
     ySpeed = ySpeed + 1;
     setLocation(getX(), getY() + ySpeed);
     getWorld().showText("mariomarioLives : "+ marioLives, 1450, 50);
-
+            
     if (isTouching(Barrel.class)) {
         removeTouching(Barrel.class);
         marioLives = marioLives - 1;
@@ -28,12 +28,13 @@ public class Mario extends Actor {
     }
     if(ySpeed > 0) {
         while(isTouching(Floor.class)) {
+            Floor f = (Floor)getOneIntersectingObject(Floor.class);
             ySpeed = 0;
             setLocation(getX(), getY() - 1);
             isJumping = false;
             if(Greenfoot.isKeyDown("up") && !isJumping) {
                 isJumping = true;
-                ySpeed = -27;
+                ySpeed = f.jumpHeight;
                 // Determine jump direction based on current image
                 if (currentMarioImage.contains("left")) {
                     currentMarioImage = "mario_jump_left.png";

@@ -14,16 +14,18 @@ public class Floor extends Actor
      */
     
     int direction;
+    int jumpHeight;
     
-    public Floor(int direction)
+    public Floor(int direction, int jumpHeight)
     {
         this.direction = direction;
+        this.jumpHeight = jumpHeight;
         scaleImage();
     }
     
     public void act() 
     {
-        // Add your action code here.
+        
     }    
     
     public void scaleImage() {
