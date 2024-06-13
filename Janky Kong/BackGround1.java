@@ -58,6 +58,9 @@ public class BackGround1 extends World
         addObject(new Floor(1, -20), 950, 850 + 50);
         addObject(new Floor(1, -20), 1050, 850 + 55);
 
+        addObject(new Ladder(), 350, 750);
+        addObject(new Ladder(), 350, 652);
+
         
         addObject(new Mario(), 950, 850); // mario
     }
