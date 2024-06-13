@@ -1,23 +1,25 @@
 import greenfoot.*;
 
 /**
- * Write a description of class Barrel here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Barrel Class
+ * June 12, 2024
  */
 public class Barrel extends Actor
 {
     
-    public Barrel() {
+    public Barrel() 
+    {
         scaleImage();
     }
     public void act() 
     {
-        if(isAtEdge()) {
+        Mario m = getWorld().getObjects(Mario.class).get(0); // gets the mario object
+        
+        if(isAtEdge()) // if it touches the edge
+        {
             getWorld().removeObject(this);
         } 
-        else
+        else if (m.marioLives > 0) // if mario is alive
         {
           setLocation(getX(), getY() + 3);
           while(isTouching(Floor.class))
@@ -26,11 +28,11 @@ public class Barrel extends Actor
             setLocation(getX() + 2*(f.direction), getY() - 3);
             turn(3*f.direction);
           }
-
        }
     }
     
-    public void scaleImage() {
+    public void scaleImage() 
+    {
         GreenfootImage image = getImage();  
         image.scale(65, 65);
         setImage(image);

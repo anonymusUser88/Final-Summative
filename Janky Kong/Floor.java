@@ -1,10 +1,8 @@
 import greenfoot.*;
 
 /**
- * Write a description of class Floor here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Floor class
+ * June 12, 2024
  */
 public class Floor extends Actor
 {
@@ -13,8 +11,8 @@ public class Floor extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     
-    int direction;
-    int jumpHeight;
+    int direction; // direction that the barrel rolls
+    int jumpHeight; // the height that mario can jump
     
     public Floor(int direction, int jumpHeight)
     {
@@ -28,7 +26,8 @@ public class Floor extends Actor
         
     }    
     
-    public void scaleImage() {
+    public void scaleImage() 
+    {
         GreenfootImage image = getImage();  
         image.scale(100, 30);
         setImage(image);
