@@ -1,7 +1,7 @@
 import greenfoot.*;
 /**
  * DK Class
- * June 12, 2024
+ * June 14, 2024
  */
 public class DK extends Actor
 {
@@ -16,14 +16,12 @@ public class DK extends Actor
     {
         Mario m = getWorld().getObjects(Mario.class).get(0); // gets the mario object
         
-        if(isTouching(Mario.class))
+        if(isTouching(Mario.class) || isTouching(Luigi.class)) // EDIT
         {
             Greenfoot.setWorld(new Finish());
-
-            //Greenfoot.stop();
         }
         
-        else if (m.lives > 0)
+        else if (m.lives > 0) 
         {
             if(System.currentTimeMillis() - lastTimeSinceDKMoves > 1750)
             {

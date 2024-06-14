@@ -2,7 +2,7 @@ import greenfoot.*;
 
 /**
  * Mario Class
- * June 13, 2024
+ * June 14, 2024
  */
 public class Mario extends Actor 
 {
@@ -14,6 +14,8 @@ public class Mario extends Actor
     "mario_jump_right.png", "mario_left.png", "mario_left_2.png", "mario_left_3.png", "mario_right.png",
     "mario_right_2.png", "mario_right_3.png"};
     String currentImage = images[0]; 
+    Luigi l = getWorld().getObjects(Luigi.class).get(0); // gets the luigi object
+    
 
     public Mario() 
     {
@@ -23,35 +25,33 @@ public class Mario extends Actor
     public void act() 
     {
         otherActions();
-        
-        animation(images);
+        checkLives();
+        animation(this.images, "up", "right", "left");
     }
     
     public void otherActions()
     {
-        setImageScaled(currentImage);
+        setImageScaled(this.currentImage);
         this.ySpeed = this.ySpeed + 1;
         setLocation(getX(), getY() + this.ySpeed);
         getWorld().showText("Lives : "+ this.lives, 950, 50);
-
+    }
+    
+    public void checkLives() 
+    {
         if (isTouching(Barrel.class)) // touching a barrel
         {
             removeTouching(Barrel.class);
             this.lives = this.lives - 1; 
         }
         
-        if (lives == 0) // mario loses all lives
+        if (this.lives == 0)
         {
             getWorld().showText("GAME OVER", 750, 600);
         }
-        
-        if (Greenfoot.isKeyDown("down")) 
-        {
-            this.ySpeed = 50;
-        }
     }
     
-    public void animation(String[] i)
+    public void animation(String[] i, String u, String r, String l) // images + keys used to move mario
     {
         if(ySpeed > 0) // is in the air
         {
@@ -61,7 +61,7 @@ public class Mario extends Actor
                 this.ySpeed = 0;
                 setLocation(getX(), getY() - 1);
                 this.isJumping = false;
-                if(Greenfoot.isKeyDown("up") && !this.isJumping) 
+                if(Greenfoot.isKeyDown(u) && !this.isJumping) 
                 {
                     this.isJumping = true;
                     this.ySpeed = f.jumpHeight;
@@ -97,7 +97,7 @@ public class Mario extends Actor
             }
         }    
 
-        if (Greenfoot.isKeyDown("left")) // when pressing left key
+        if (Greenfoot.isKeyDown(l)) // when pressing left key
         {
             move(-5);
 
@@ -128,7 +128,7 @@ public class Mario extends Actor
             }
         } 
 
-        else if (Greenfoot.isKeyDown("right")) 
+        else if (Greenfoot.isKeyDown(r)) 
         {
             move(5);
             // animation

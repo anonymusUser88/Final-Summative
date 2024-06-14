@@ -2,7 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * A second player (Luigi)
- * June 13, 2024
+ * June 14, 2024
  */
 
 
@@ -12,6 +12,7 @@ public class Luigi extends Mario
     "luigi_jump_right.png", "luigi_left.png", "luigi_left_2.png", "luigi_left_3.png", "luigi_right.png",
     "luigi_right_2.png", "luigi_right_3.png"};
     String currentImage = images[0];
+    int lives = 3;
     
     /**
      * Act - do whatever the Luigi wants to do. This method is called whenever
@@ -25,6 +26,8 @@ public class Luigi extends Mario
     
     public void act()
     {
-        super.animation(this.images);
+        //super.checkLives();
+        super.otherActions();
+        super.animation(this.images, "w", "d", "a"); // up, right, left
     }
 }

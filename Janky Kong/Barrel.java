@@ -2,7 +2,7 @@ import greenfoot.*;
 
 /**
  * Barrel Class
- * June 12, 2024
+ * June 14, 2024
  */
 public class Barrel extends Actor
 {
