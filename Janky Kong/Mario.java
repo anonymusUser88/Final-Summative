@@ -11,10 +11,18 @@ public class Mario extends Actor {
     }
 
     public void act() {
+<<<<<<< Updated upstream
         setImageScaled(Marioimage);
         speed = speed + 1;
         setLocation(getX(), getY() + speed);
         getWorld().showText("Lives : "+ Lives, 1450, 50);
+=======
+        //System.out.println(currentMarioImage);
+        setImageScaled(currentMarioImage);
+        ySpeed = ySpeed + 1;
+        setLocation(getX(), getY() + ySpeed);
+        getWorld().showText("mariomarioLives : "+ marioLives, 1450, 50);
+>>>>>>> Stashed changes
 
         if (isTouching(Barrel.class)) {
             removeTouching(Barrel.class);
@@ -41,6 +49,37 @@ public class Mario extends Actor {
             }
         }    
 
+<<<<<<< Updated upstream
+=======
+        if (ySpeed <= 0) {
+            while (isTouching(Floor.class)) {
+                ySpeed = 0;
+                setLocation(getX(), getY() - 1);
+                isJumping = false;
+                if (currentMarioImage.contains("left")) {
+                    currentMarioImage = "mario_idle_left.png";
+                } else {
+                    currentMarioImage = "mario_idle_right.png";
+                }
+            }
+        }
+
+        if(!isJumping && currentMarioImage.equals("mario_jump_left.png")) {
+            currentMarioImage = "mario_idle_left.png";
+        } else if(!isJumping && currentMarioImage.equals("mario_jump_right.png")) {
+            currentMarioImage = "mario_idle_right.png";
+        }
+        
+        if(!isJumping) {
+            if(isTouching(Floor.class)) {
+                if (currentMarioImage.contains("left")) {
+                    currentMarioImage = "mario_idle_left.png";
+                } else {
+                    currentMarioImage = "mario_idle_right.png";
+                }
+            }
+        }
+>>>>>>> Stashed changes
         if (Greenfoot.isKeyDown("left")) {
             move(-5);
             if (System.currentTimeMillis() - lastTime > 50) {

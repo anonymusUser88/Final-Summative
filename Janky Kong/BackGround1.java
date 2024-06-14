@@ -36,6 +36,7 @@ public class BackGround1 extends World
         addObject(new Floor(1), 375, 700);
         addObject(new Floor(1), 625, 700);
         
+<<<<<<< Updated upstream
         // ground floor
         addObject(new Floor(-1), 125, 1000);
         addObject(new Floor(-1), 375, 1000);
@@ -45,5 +46,10 @@ public class BackGround1 extends World
         addObject(new Floor(-1), 1375, 1000);
         
         addObject(new Mario(), 125, 850); // mario
+=======
+        addObject(new Mario(), 950, 850); // mario
+        
+        addObject(new OilBarrel(), 500, 800); // mario
+>>>>>>> Stashed changes
     }
 }
