@@ -2,161 +2,174 @@ import greenfoot.*;
 
 /**
  * Mario Class
- * June 12, 2024
+ * June 13, 2024
  */
 public class Mario extends Actor 
 {
     int ySpeed = 9; // gravity
-    int marioLives = 3; // lives
-    String currentMarioImage = "mario_idle_right.png";
+    int lives = 3; // lives
     long lastXInputTime = 0; // last time a key was pressed
     boolean isJumping = false; // whether Mario is jumping
+    String[] images = {"mario_idle_left.png", "mario_idle_right.png", "mario_jump_left.png",
+    "mario_jump_right.png", "mario_left.png", "mario_left_2.png", "mario_left_3.png", "mario_right.png",
+    "mario_right_2.png", "mario_right_3.png"};
+    String currentImage = images[0]; 
 
     public Mario() 
     {
-        setImageScaled(currentMarioImage);
+        setImageScaled(currentImage);
     }
 
-      
     public void act() 
     {
-        System.out.println(ySpeed);
-        setImageScaled(currentMarioImage);
-        ySpeed = ySpeed + 1;
-        setLocation(getX(), getY() + ySpeed);
-        getWorld().showText("Lives : "+ marioLives, 950, 50);
-                
+        otherActions();
+        
+        animation(images);
+    }
+    
+    public void otherActions()
+    {
+        setImageScaled(currentImage);
+        this.ySpeed = this.ySpeed + 1;
+        setLocation(getX(), getY() + this.ySpeed);
+        getWorld().showText("Lives : "+ this.lives, 950, 50);
+
         if (isTouching(Barrel.class)) // touching a barrel
         {
             removeTouching(Barrel.class);
-            marioLives = marioLives - 1; 
+            this.lives = this.lives - 1; 
         }
-        if (marioLives == 0) // mario loses all lives
+        
+        if (lives == 0) // mario loses all lives
         {
             getWorld().showText("GAME OVER", 750, 600);
-            Greenfoot.stop();
         }
+        
+        if (Greenfoot.isKeyDown("down")) 
+        {
+            this.ySpeed = 50;
+        }
+    }
+    
+    public void animation(String[] i)
+    {
         if(ySpeed > 0) // is in the air
         {
             while(isTouching(Floor.class)) 
             {
                 Floor f = (Floor)getOneIntersectingObject(Floor.class);
-                ySpeed = 0;
+                this.ySpeed = 0;
                 setLocation(getX(), getY() - 1);
-                isJumping = false;
-                if(Greenfoot.isKeyDown("up") && !isJumping) 
+                this.isJumping = false;
+                if(Greenfoot.isKeyDown("up") && !this.isJumping) 
                 {
-                    isJumping = true;
-                    ySpeed = f.jumpHeight;
+                    this.isJumping = true;
+                    this.ySpeed = f.jumpHeight;
+                    
                     // Determine jump direction based on current image
-                    if (currentMarioImage.contains("left")) 
+                    if (this.currentImage.contains("left")) 
                     {
-                        currentMarioImage = "mario_jump_left.png";
+                        this.currentImage = i[2];
                     }
                     else 
                     {
-                        currentMarioImage = "mario_jump_right.png";
+                        this.currentImage = i[3];
                     }
                 }
             }
         }
-        
-        if(ySpeed <= 0) 
+
+        if(this.ySpeed <= 0) 
         {
             while(isTouching(Floor.class)) 
             {
-                ySpeed = 0;
+                this.ySpeed = 0;
                 setLocation(getX(), getY() + 1);
-                isJumping = false;
-                if (currentMarioImage.contains("left")) 
+                this.isJumping = false;
+                if (this.currentImage.contains("left")) 
                 {
-                    currentMarioImage = "mario_idle_left.png";
+                    this.currentImage = i[0];
                 } 
                 else 
                 {
-                    currentMarioImage = "mario_idle_right.png";
+                    this.currentImage = i[1];
                 }
             }
         }    
-    
+
         if (Greenfoot.isKeyDown("left")) // when pressing left key
         {
             move(-5);
-            
+
             // animation
-            if(!isJumping)
+            if(!this.isJumping)
             {
-                if (System.currentTimeMillis() - lastXInputTime > 50)
+                if (System.currentTimeMillis() - this.lastXInputTime > 50)
                 {
-                    if (currentMarioImage.equals("mario_idle_right.png") || currentMarioImage.equals("mario_idle_left.png")) 
+                    if (this.currentImage.equals(i[1]) || this.currentImage.equals(i[0])) 
                     {
-                        currentMarioImage = "mario_left.png";
+                        this.currentImage = i[4];
                     } 
-                    else if (currentMarioImage.equals("mario_left.png")) 
+                    else if (this.currentImage.equals(i[4])) 
                     {
-                        currentMarioImage = "mario_left_2.png";
+                        this.currentImage = i[5];
                     } 
-                    else if (currentMarioImage.equals("mario_left_2.png")) 
+                    else if (this.currentImage.equals(i[5])) 
                     {
-                        currentMarioImage = "mario_left_3.png";
+                        this.currentImage = i[6];
                     } 
-                    else if (currentMarioImage.equals("mario_left_3.png")) 
+                    else if (this.currentImage.equals(i[6])) 
                     {
-                        currentMarioImage = "mario_left.png";
+                        this.currentImage = i[4];
                     }
-                    lastXInputTime = System.currentTimeMillis();
-                    setImageScaled(currentMarioImage);
+                    this.lastXInputTime = System.currentTimeMillis();
+                    setImageScaled(this.currentImage);
                 }
             }
         } 
-        
+
         else if (Greenfoot.isKeyDown("right")) 
         {
             move(5);
             // animation
-            if(!isJumping) 
+            if(!this.isJumping) 
             {
-                if (System.currentTimeMillis() - lastXInputTime > 50) 
+                if (System.currentTimeMillis() - this.lastXInputTime > 50) 
                 {
-                    if (currentMarioImage.equals("mario_idle_right.png") || currentMarioImage.equals("mario_idle_left.png")) 
+                    if (this.currentImage.equals(i[1]) || this.currentImage.equals(i[0])) 
                     {
-                        currentMarioImage = "mario_right.png";
+                        currentImage = i[7];
                     }
-                    else if (currentMarioImage.equals("mario_right.png")) 
+                    else if (this.currentImage.equals(i[7])) 
                     {
-                        currentMarioImage = "mario_right_2.png";
+                        this.currentImage = i[8];
                     } 
-                    else if (currentMarioImage.equals("mario_right_2.png")) 
+                    else if (this.currentImage.equals(i[8])) 
                     {
-                        currentMarioImage = "mario_right_3.png";
+                        this.currentImage = i[9];
                     } 
-                    else if (currentMarioImage.equals("mario_right_3.png")) 
+                    else if (this.currentImage.equals(i[9])) 
                     {
-                        currentMarioImage = "mario_right.png";
+                        this.currentImage = i[7];
                     }
-                    lastXInputTime = System.currentTimeMillis();
-                    setImageScaled(currentMarioImage);
+                    this.lastXInputTime = System.currentTimeMillis();
+                    setImageScaled(this.currentImage);
                 }
             }
         }  
-        
+
         // no keys are being pressed
-        else if(currentMarioImage.contains("left")) 
+        else if(this.currentImage.contains("left")) 
         {
-            currentMarioImage = "mario_idle_left.png";
+            this.currentImage = i[0];
         }
         else 
         {
-            currentMarioImage = "mario_idle_right.png";
-        }
-    
-        if (Greenfoot.isKeyDown("down")) 
-        {
-            ySpeed = 50;
+            this.currentImage = i[1];
         }
     }
-    
-    private void setImageScaled(String image) 
+
+    protected void setImageScaled(String image) 
     {
         GreenfootImage img = new GreenfootImage(image);
         img.scale(img.getWidth() * 4, img.getHeight() * 4);

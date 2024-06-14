@@ -1,7 +1,7 @@
 import greenfoot.*;
 
 /**
- * June 12, 2024
+ * June 13, 2024
  * ICS 4U1
  * Janky Kong
  */
@@ -11,13 +11,13 @@ public class BackGround1 extends World
     /**
      * Constructor for objects of class BackGround1.
      */
-    
+
     public BackGround1()
     {    
         super(1050, 900, 1);
-        
+
         addObject(new DK(), 200, 150); // DK
-        
+
         // top left
         addObject(new Floor(1, -20), 125, 219);
         addObject(new Floor(1, -20), 25, 219);
@@ -28,8 +28,7 @@ public class BackGround1 extends World
         addObject(new Floor(1, -20), 625, 219 + 25);
         addObject(new Floor(1, -20), 725, 219 + 30);
         addObject(new Floor(1, -20), 825, 219 + 35);
-        
-        
+
         // top right
         addObject(new Floor(-1, -27), 1000, 525);
         addObject(new Floor(-1, -20), 900, 525 + 5);
@@ -41,7 +40,6 @@ public class BackGround1 extends World
         addObject(new Floor(-1, -20), 300, 525 + 35);
         addObject(new Floor(-1, -20), 200, 525 + 40);
 
-        
         // bottom left
         addObject(new Floor(1, -27), 50, 850 + 5);
         addObject(new Floor(1, -20), 150, 850 + 10);
@@ -54,9 +52,9 @@ public class BackGround1 extends World
         addObject(new Floor(1, -20), 850, 850 + 45);
         addObject(new Floor(1, -20), 950, 850 + 50);
         addObject(new Floor(1, -20), 1050, 850 + 55);
-        
-        
+
         addObject(new Mario(), 950, 850); // mario
         addObject(new Princess(), 100, 170); // princess
+        addObject(new Luigi(), 1000, 850); // luigi
     }
 }

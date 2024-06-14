@@ -20,10 +20,10 @@ public class DK extends Actor
         {
             Greenfoot.setWorld(new Finish());
 
-            Greenfoot.stop();
+            //Greenfoot.stop();
         }
         
-        else if (m.marioLives > 0)
+        else if (m.lives > 0)
         {
             if(System.currentTimeMillis() - lastTimeSinceDKMoves > 1750)
             {
