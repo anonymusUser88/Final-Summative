@@ -7,45 +7,48 @@ import greenfoot.*;
 public class Mario extends Actor 
 {
     int ySpeed = 9; // gravity
-    int lives = 3; // lives
+    int lives = 1; // lives
     long lastXInputTime = 0; // last time a key was pressed
     boolean isJumping = false; // whether Mario is jumping
     String[] images = {"mario_idle_left.png", "mario_idle_right.png", "mario_jump_left.png",
     "mario_jump_right.png", "mario_left.png", "mario_left_2.png", "mario_left_3.png", "mario_right.png",
     "mario_right_2.png", "mario_right_3.png"};
-    String currentImage = images[0]; 
-    Luigi l = getWorld().getObjects(Luigi.class).get(0); // gets the luigi object
+    String currentImage = images[0];
     
 
     public Mario() 
     {
-        setImageScaled(currentImage);
+        this.setImageScaled(currentImage);
     }
 
     public void act() 
     {
-        otherActions();
-        checkLives();
-        animation(this.images, "up", "right", "left");
+        this.checkLives();
+        this.otherActions();
+        this.animation(this.images, "up", "right", "left");
     }
     
     public void otherActions()
     {
+        Luigi l = getWorld().getObjects(Luigi.class).get(0); // gets the luigi object
+        
         setImageScaled(this.currentImage);
         this.ySpeed = this.ySpeed + 1;
         setLocation(getX(), getY() + this.ySpeed);
-        getWorld().showText("Lives : "+ this.lives, 950, 50);
+        getWorld().showText("Luigi Lives : "+ l.lives, 950, 150);
     }
     
     public void checkLives() 
     {
+        Luigi l = getWorld().getObjects(Luigi.class).get(0); // gets the luigi object
+        
         if (isTouching(Barrel.class)) // touching a barrel
         {
             removeTouching(Barrel.class);
-            this.lives = this.lives - 1; 
+            this.lives-=1; 
         }
         
-        if (this.lives == 0)
+        if (this.lives <= 0 && l.lives <= 0)
         {
             getWorld().showText("GAME OVER", 750, 600);
         }

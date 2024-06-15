@@ -15,12 +15,13 @@ public class Barrel extends Actor
     public void act() 
     {
         Mario m = getWorld().getObjects(Mario.class).get(0); // gets the mario object
+        Luigi l = getWorld().getObjects(Luigi.class).get(0); // gets the luigi object
 
         if(isAtEdge()) // if it touches the edge
         {
             getWorld().removeObject(this);
         } 
-        else if (m.lives > 0) // if mario is alive
+        else if (m.lives > 0 || l.lives > 0) // if mario is alive
         {
             setLocation(getX(), getY() + 3);
             while(isTouching(Floor.class))

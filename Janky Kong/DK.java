@@ -15,14 +15,16 @@ public class DK extends Actor
     public void act() 
     {
         Mario m = getWorld().getObjects(Mario.class).get(0); // gets the mario object
+        Luigi l = getWorld().getObjects(Luigi.class).get(0); // gets the luigi object
         
-        if(isTouching(Mario.class) || isTouching(Luigi.class)) // EDIT
+        if(isTouching(Mario.class) || isTouching(Luigi.class)) // if either of the players reach donkey kong
         {
-            Greenfoot.setWorld(new Finish());
+            Greenfoot.setWorld(new Finish()); // the game ends
         }
         
-        else if (m.lives > 0) 
+        else if (m.lives > 0 || l.lives > 0) // if either player is alive
         {
+            // animation + throwing barrel
             if(System.currentTimeMillis() - lastTimeSinceDKMoves > 1750)
             {
                 setImageScaled("Donkey_Kong_Standing.png");

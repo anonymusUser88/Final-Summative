@@ -12,7 +12,7 @@ public class Luigi extends Mario
     "luigi_jump_right.png", "luigi_left.png", "luigi_left_2.png", "luigi_left_3.png", "luigi_right.png",
     "luigi_right_2.png", "luigi_right_3.png"};
     String currentImage = images[0];
-    int lives = 3;
+    int lives = 1;
     
     /**
      * Act - do whatever the Luigi wants to do. This method is called whenever
@@ -25,9 +25,26 @@ public class Luigi extends Mario
     }
     
     public void act()
-    {
-        //super.checkLives();
+    {        
+        this.checkLives();
         super.otherActions();
         super.animation(this.images, "w", "d", "a"); // up, right, left
+    }
+    
+    public void checkLives() 
+    {
+        Mario m = getWorld().getObjects(Mario.class).get(0); // gets the luigi object
+        getWorld().showText("Mario Lives : "+ m.lives, 950, 100);
+        
+        if (isTouching(Barrel.class)) // touching a barrel
+        {
+            removeTouching(Barrel.class);
+            this.lives = this.lives - 1; 
+        }
+        
+        if (this.lives <= 0 && m.lives <= 0)
+        {
+            getWorld().showText("GAME OVER", 750, 600);
+        }
     }
 }
