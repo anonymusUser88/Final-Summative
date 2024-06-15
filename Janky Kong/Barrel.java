@@ -2,7 +2,7 @@ import greenfoot.*;
 
 /**
  * Barrel Class
- * June 14, 2024
+ * June 15, 2024
  */
 public class Barrel extends Actor
 {
@@ -21,7 +21,7 @@ public class Barrel extends Actor
         {
             getWorld().removeObject(this);
         } 
-        else if (m.lives > 0 || l.lives > 0) // if mario is alive
+        else if (m.isAlive || l.isAlive) // if either player is alive
         {
             setLocation(getX(), getY() + 3);
             while(isTouching(Floor.class))

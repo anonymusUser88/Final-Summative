@@ -2,7 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * A second player (Luigi)
- * June 14, 2024
+ * June 15, 2024
  */
 
 
@@ -12,7 +12,8 @@ public class Luigi extends Mario
     "luigi_jump_right.png", "luigi_left.png", "luigi_left_2.png", "luigi_left_3.png", "luigi_right.png",
     "luigi_right_2.png", "luigi_right_3.png"};
     String currentImage = images[0];
-    int lives = 1;
+    int lives = 3;
+    boolean isAlive = true; // tracks whether the player is alive
     
     /**
      * Act - do whatever the Luigi wants to do. This method is called whenever
@@ -27,8 +28,11 @@ public class Luigi extends Mario
     public void act()
     {        
         this.checkLives();
-        super.otherActions();
-        super.animation(this.images, "w", "d", "a"); // up, right, left
+        if (this.isAlive) // is the player is alive
+        {
+            super.otherActions();
+            super.animation(this.images, "w", "d", "a"); // up, right, left
+        }
     }
     
     public void checkLives() 
@@ -36,15 +40,16 @@ public class Luigi extends Mario
         Mario m = getWorld().getObjects(Mario.class).get(0); // gets the luigi object
         getWorld().showText("Mario Lives : "+ m.lives, 950, 100);
         
-        if (isTouching(Barrel.class)) // touching a barrel
+        if (isTouching(Barrel.class) && this.isAlive) // touching a barrel
         {
             removeTouching(Barrel.class);
             this.lives = this.lives - 1; 
         }
         
-        if (this.lives <= 0 && m.lives <= 0)
+        if (this.lives <= 0) // if all lives are gone
         {
-            getWorld().showText("GAME OVER", 750, 600);
+            setImage("death_image.png"); // they 'disappear'
+            this.isAlive = false; // they are not longer alive
         }
     }
 }

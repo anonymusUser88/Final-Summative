@@ -2,19 +2,19 @@ import greenfoot.*;
 
 /**
  * Mario Class
- * June 14, 2024
+ * June 15, 2024
  */
 public class Mario extends Actor 
 {
     int ySpeed = 9; // gravity
-    int lives = 1; // lives
+    int lives = 3; // lives
     long lastXInputTime = 0; // last time a key was pressed
     boolean isJumping = false; // whether Mario is jumping
     String[] images = {"mario_idle_left.png", "mario_idle_right.png", "mario_jump_left.png",
-    "mario_jump_right.png", "mario_left.png", "mario_left_2.png", "mario_left_3.png", "mario_right.png",
-    "mario_right_2.png", "mario_right_3.png"};
-    String currentImage = images[0];
-    
+            "mario_jump_right.png", "mario_left.png", "mario_left_2.png", "mario_left_3.png", "mario_right.png",
+            "mario_right_2.png", "mario_right_3.png"};
+    String currentImage = images[0]; 
+    boolean isAlive = true; // tracks whether the player is alive
 
     public Mario() 
     {
@@ -24,36 +24,45 @@ public class Mario extends Actor
     public void act() 
     {
         this.checkLives();
-        this.otherActions();
-        this.animation(this.images, "up", "right", "left");
+        if (isAlive)
+        {
+            this.otherActions();
+            this.animation(this.images, "up", "right", "left");
+        }
     }
-    
+
     public void otherActions()
     {
         Luigi l = getWorld().getObjects(Luigi.class).get(0); // gets the luigi object
-        
+
         setImageScaled(this.currentImage);
         this.ySpeed = this.ySpeed + 1;
         setLocation(getX(), getY() + this.ySpeed);
         getWorld().showText("Luigi Lives : "+ l.lives, 950, 150);
     }
-    
+
     public void checkLives() 
     {
         Luigi l = getWorld().getObjects(Luigi.class).get(0); // gets the luigi object
-        
-        if (isTouching(Barrel.class)) // touching a barrel
+
+        if (isTouching(Barrel.class) && this.isAlive) // touching a barrel
         {
             removeTouching(Barrel.class);
             this.lives-=1; 
         }
-        
-        if (this.lives <= 0 && l.lives <= 0)
+
+        if (this.lives <= 0)
+        {
+            setImage("death_image.png"); // they 'disappear'
+            this.isAlive = false;
+        }
+
+        if (!this.isAlive && !l.isAlive) // if neither player is alive
         {
             getWorld().showText("GAME OVER", 750, 600);
         }
     }
-    
+
     public void animation(String[] i, String u, String r, String l) // images + keys used to move mario
     {
         if(ySpeed > 0) // is in the air
@@ -68,7 +77,7 @@ public class Mario extends Actor
                 {
                     this.isJumping = true;
                     this.ySpeed = f.jumpHeight;
-                    
+
                     // Determine jump direction based on current image
                     if (this.currentImage.contains("left")) 
                     {

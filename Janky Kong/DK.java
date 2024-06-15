@@ -1,7 +1,7 @@
 import greenfoot.*;
 /**
  * DK Class
- * June 14, 2024
+ * June 15, 2024
  */
 public class DK extends Actor
 {
@@ -22,7 +22,7 @@ public class DK extends Actor
             Greenfoot.setWorld(new Finish()); // the game ends
         }
         
-        else if (m.lives > 0 || l.lives > 0) // if either player is alive
+        else if (m.isAlive || l.isAlive) // if either player is alive
         {
             // animation + throwing barrel
             if(System.currentTimeMillis() - lastTimeSinceDKMoves > 1750)

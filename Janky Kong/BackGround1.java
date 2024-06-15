@@ -1,7 +1,7 @@
 import greenfoot.*;
 
 /**
- * June 14, 2024
+ * June 15, 2024
  * ICS 4U1
  * Janky Kong
  */
@@ -15,7 +15,7 @@ public class BackGround1 extends World
     public BackGround1()
     {    
         super(1050, 900, 1);
-
+        
         addObject(new DK(), 200, 150); // DK
 
         // top left
