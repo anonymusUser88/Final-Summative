@@ -26,7 +26,7 @@ public class DK extends Actor
             scaleImage();
             lastTimeSinceBarrelThrown = System.currentTimeMillis();
             lastTimeSinceDKMoves = System.currentTimeMillis();
-            if(randomNum > 2) {
+            if(randomNum > 1) {
                 getWorld().addObject(new Barrel("barrel.png"), getX(), getY());
                 randomNum = Greenfoot.getRandomNumber(15) + 1;
             }   else {
