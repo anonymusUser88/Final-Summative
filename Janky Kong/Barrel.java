@@ -2,14 +2,18 @@ import greenfoot.*;
 
 /**
  * Barrel Class
- * June 15, 2024
+ * June 17, 2024
  */
 public class Barrel extends Actor
 {
+    String barrelImage;
+    boolean isTouching = false;
+    long timeTouching = 0;
 
-    public Barrel() 
+    public Barrel(String barrelImage) 
     {
-        scaleImage();
+        this.barrelImage = barrelImage;
+        setImageScaled(barrelImage);
     }
 
     public void act() 
@@ -31,13 +35,28 @@ public class Barrel extends Actor
                 turn(3*f.direction);
             }
         }
+
+        if (isTouching(OilBarrel.class)) 
+        {
+            isTouching = true;
+            if (timeTouching == 0) 
+            {
+                timeTouching = System.currentTimeMillis();
+            }
+
+            if (System.currentTimeMillis() - timeTouching > 0.5) 
+            {
+                getWorld().removeObject(this);
+                timeTouching = 0;
+            }
+        }
     }
 
-    public void scaleImage() 
+    private void setImageScaled(String image) 
     {
-        GreenfootImage image = getImage();  
-        image.scale(65, 65);
-        setImage(image);
+        GreenfootImage img = new GreenfootImage(image);
+        img.scale(img.getWidth() / 6, img.getHeight() / 5); // Adjust scaling factors appropriately
+        setImage(img);
     }
 }
  

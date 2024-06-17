@@ -1,7 +1,7 @@
 import greenfoot.*;
 
 /**
- * June 15, 2024
+ * June 17, 2024
  * ICS 4U1
  * Janky Kong
  */
@@ -52,7 +52,16 @@ public class BackGround1 extends World
         addObject(new Floor(1, -20), 850, 850 + 45);
         addObject(new Floor(1, -20), 950, 850 + 50);
         addObject(new Floor(1, -20), 1050, 850 + 55);
+        
+        //First Ladder
+        addObject(new Ladder(), 350, 750);
+        addObject(new Ladder(), 350, 652);
+        
+        //Second Ladder
+        addObject(new Ladder(), 700, 350);
+        addObject(new Ladder(), 700, 417);
 
+        addObject(new OilBarrel(), 980, 790); // mario
         addObject(new Mario(), 950, 850); // mario
         addObject(new Princess(), 100, 170); // princess
         addObject(new Luigi(), 1000, 850); // luigi

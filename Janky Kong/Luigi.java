@@ -40,7 +40,7 @@ public class Luigi extends Mario
         Mario m = getWorld().getObjects(Mario.class).get(0); // gets the luigi object
         getWorld().showText("Mario Lives : "+ m.lives, 950, 100);
         
-        if (isTouching(Barrel.class) && this.isAlive) // touching a barrel
+        if ((isTouching(Barrel.class) || isTouching(Fire.class)) && this.isAlive) // touching a barrel
         {
             removeTouching(Barrel.class);
             this.lives = this.lives - 1; 

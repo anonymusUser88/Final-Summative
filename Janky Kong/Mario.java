@@ -45,7 +45,7 @@ public class Mario extends Actor
     {
         Luigi l = getWorld().getObjects(Luigi.class).get(0); // gets the luigi object
 
-        if (isTouching(Barrel.class) && this.isAlive) // touching a barrel
+        if ((isTouching(Barrel.class) || (isTouching(Fire.class))) && this.isAlive) // touching a barrel
         {
             removeTouching(Barrel.class);
             this.lives-=1; 
@@ -178,6 +178,12 @@ public class Mario extends Actor
         else 
         {
             this.currentImage = i[1];
+        }
+        
+        if (isTouching(Ladder.class) && Greenfoot.isKeyDown(u)) {
+            setLocation(getX(), getY() - 2);
+
+            this.ySpeed = 0;
         }
     }
 
