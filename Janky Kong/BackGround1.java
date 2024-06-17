@@ -63,7 +63,7 @@ public class BackGround1 extends World
 
         addObject(new OilBarrel(), 980, 790); // mario
         addObject(new Mario(), 950, 850); // mario
-        addObject(new Princess(), 100, 170); // princess
+        addObject(new Princess(), 60, 170); // princess
         addObject(new Luigi(), 1000, 850); // luigi
     }
 }

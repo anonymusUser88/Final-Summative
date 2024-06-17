@@ -8,6 +8,9 @@ public class DK extends Actor
     long lastTimeSinceBarrelThrown; // throwing the barrel
     long lastTimeSinceDKMoves; // animation
     int randomNum = Greenfoot.getRandomNumber(15) + 1;
+    int Yshift = 10; // used in gameover screen to shift dk
+    Boolean playersWon = false;
+    long TimeofDeath;
 
     public DK()
     {
@@ -21,7 +24,20 @@ public class DK extends Actor
 
         if(isTouching(Mario.class) || isTouching(Luigi.class)) // if either of the players reach donkey kong
         {
-            Greenfoot.setWorld(new Finish()); // the game ends
+            TimeofDeath = System.currentTimeMillis();
+            playersWon = true;
+            getWorld().addObject(new Heart(), 120, 100);
+            getWorld().showText("YOU WIN", 750, 600);
+            GreenfootSound music = new GreenfootSound("Donkey Kong Arcade Music - Round Clear.mp3");
+            music.play();
+        }
+        if(getY()>770)
+        {
+            Greenfoot.stop();
+        }
+        if(playersWon == true)
+        {
+            setLocation(getX(), getY() + Yshift);
         }
 
         else if (m.isAlive || l.isAlive) // if either player is alive

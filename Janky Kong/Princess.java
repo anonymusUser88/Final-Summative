@@ -8,12 +8,47 @@ import greenfoot.*;
  */
 public class Princess extends Actor
 {
-    /**
-     * Act - do whatever the Princess wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    long TimeSinceHelpAnimation;
+    long TimeSinceLastAnimation;
+    public Princess()
+    {
+        setImageScaled("Princess_Peach_.png",17);
+    }
+
     public void act() 
     {
-        // Add your action code here.
-    }    
+        DK d = getWorld().getObjects(DK.class).get(0); // gets the DK object
+
+        if(d.playersWon == false)
+        {
+            if(System.currentTimeMillis() - TimeSinceLastAnimation > 1000)
+            {
+                setImageScaled("Princess_Peach_.png",17);
+                setLocation(60, 168);
+            }
+            if(System.currentTimeMillis() - TimeSinceHelpAnimation > 1500){
+                TimeSinceHelpAnimation = System.currentTimeMillis();
+                TimeSinceLastAnimation = System.currentTimeMillis();
+                setLocation(98, 152);
+
+                setImage("princess_peach_help.png");
+
+            }
+
+        } 
+
+        else{
+            setImageScaled("Princess_Peach_.png",17);
+            setLocation(60, 168);
+
+        }
+
+    }
+
+    private void setImageScaled(String image,int ScaleValue) {
+        GreenfootImage img = new GreenfootImage(image);
+        img.scale(img.getWidth() / ScaleValue, img.getHeight() / ScaleValue);
+        setImage(img);
+
+    }
 }
