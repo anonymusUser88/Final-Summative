@@ -58,12 +58,17 @@ public class BackGround1 extends World
         addObject(new Floor(1, -20), 950, 850 + 50);
         addObject(new Floor(1, -20), 1050, 850 + 55);
 
+        //First Ladder
         addObject(new Ladder(), 350, 750);
         addObject(new Ladder(), 350, 652);
+        
+        //Second Ladder
+        addObject(new Ladder(), 700, 350);
+        addObject(new Ladder(), 700, 417);
 
         
-        addObject(new Mario(), 950, 850); // mario
-        addObject(new Fire(), 400, 800);
-        addObject(new OilBarrel(), 750, 800); // mario
+        addObject(new Mario(), 870, 850); // mario
+        //addObject(new Fire(), 450, 800);
+        addObject(new OilBarrel(), 980, 790); // mario
     }
 }

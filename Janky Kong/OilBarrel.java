@@ -1,5 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import greenfoot.*;
 /**
  * Write a description of class OilBarrel here.
  * 
@@ -31,6 +30,14 @@ public class OilBarrel extends Actor {
             }
             lastAnimationTime = System.currentTimeMillis();
         }
+        
+         Barrel f = (Barrel)getOneIntersectingObject(Barrel.class);
+         
+         if(isTouching(Barrel.class)) {
+             if(f.barrelImage.equals("barrel2.png")) {
+                 getWorld().addObject(new Fire(), getX(), getY());
+             }
+         }
     }
 
     private void setImageScaled(String image) {

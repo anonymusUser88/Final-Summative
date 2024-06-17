@@ -7,12 +7,12 @@ public class Mario extends Actor {
     long lastXInputTime = 0;
     boolean isJumping = false;
     long lastUpTime = 0;
+    
     public Mario() {
         setImageScaled(currentMarioImage);
     }
 
     public void act() {
-        System.out.println(currentMarioImage);
         setImageScaled(currentMarioImage);
         ySpeed = ySpeed + 1;
         setLocation(getX(), getY() + ySpeed);
@@ -22,11 +22,16 @@ public class Mario extends Actor {
             removeTouching(Barrel.class);
             marioLives = marioLives - 1;
         }
+        
         if (marioLives == 0) {
             getWorld().showText("GAME OVER", 750, 600);
             Greenfoot.stop();
         }
 
+        if(isTouching(Fire.class)) {
+            marioLives = marioLives - 1;
+        }
+        
         if (isTouching(Ladder.class) && Greenfoot.isKeyDown("up")) {
             setLocation(getX(), getY() - 2);
 
