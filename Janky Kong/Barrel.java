@@ -6,57 +6,108 @@ import greenfoot.*;
  */
 public class Barrel extends Actor
 {
-    String barrelImage;
-    boolean isTouching = false;
-    long timeTouching = 0;
+    private String barrelImage;
+    private long timeTouching = 0;
 
     public Barrel(String barrelImage) 
     {
-        this.barrelImage = barrelImage;
-        setImageScaled(barrelImage);
+        this.barrelImage = barrelImage; //There are two diff types of barrels, one is special the other one is normal
+        this.setImageScaled(barrelImage);
     }
 
     public void act() 
     {
-        Mario m = getWorld().getObjects(Mario.class).get(0); // gets the mario object
-        Luigi l = getWorld().getObjects(Luigi.class).get(0); // gets the luigi object
+        Mario m = getMario();
+        Luigi l = getLuigi();
 
-        if(isAtEdge()) // if it touches the edge
+        if(this.isAtEdge()) 
         {
-            getWorld().removeObject(this);
+            removeBarrel();
         } 
-        else if (m.isAlive || l.isAlive) // if either player is alive
+        else if (m.isAlive || l.isAlive) 
         {
-            setLocation(getX(), getY() + 3);
-            while(isTouching(Floor.class))
-            {
-                Floor f = (Floor)getOneIntersectingObject(Floor.class);
-                setLocation(getX() + 2*(f.direction), getY() - 3);
-                turn(3*f.direction);
-            }
+            this.moveBarrel();
         }
 
-        if (isTouching(OilBarrel.class)) 
+        if (this.isTouching(OilBarrel.class))  
         {
-            isTouching = true;
-            if (timeTouching == 0) 
-            {
-                timeTouching = System.currentTimeMillis();
-            }
-
-            if (System.currentTimeMillis() - timeTouching > 0.5) 
-            {
-                getWorld().removeObject(this);
-                timeTouching = 0;
-            }
+            this.handleOilBarrelTouch();
         }
     }
 
-    private void setImageScaled(String image) 
+    private Mario getMario()
+    {
+        return getWorld().getObjects(Mario.class).get(0); // gets the mario object
+    }
+
+    private Luigi getLuigi()
+    {
+        return getWorld().getObjects(Luigi.class).get(0); // gets the luigi object
+    }
+
+    private void removeBarrel()
+    {
+        getWorld().removeObject(this); //Removes barrel
+    }
+
+    private void moveBarrel()
+    {
+        setLocation(this.getX(), this.getY() + 3); //Sets barrel to move
+        while(this.isTouching(Floor.class))
+        {
+            this.handleFloorTouch();
+        }
+    }
+
+    private void handleFloorTouch()
+    {
+        //It gets the floor direction variable present in the floor that the barrel is currently on
+        //Helps to ensure the barrel travels the correct direction
+        Floor f = (Floor)getOneIntersectingObject(Floor.class); //Gets the var
+        setLocation(this.getX() + 2* f.getDirection(), this.getY() - 3); //Moves according to the var
+        this.turn(3*f.getDirection()); //Rotates according to the var
+    }
+
+    private void handleOilBarrelTouch()
+    {
+        if (this.timeTouching == 0)  
+        {
+            this.timeTouching = System.currentTimeMillis();
+        }
+
+        if (System.currentTimeMillis() - this.timeTouching > 1) 
+        {
+            removeBarrel();
+            this.timeTouching = 0;
+        }
+    }
+
+    private void setImageScaled(String image) //Takes in an image and spits out that image scaled appropriately
     {
         GreenfootImage img = new GreenfootImage(image);
         img.scale(img.getWidth() / 6, img.getHeight() / 5); // Adjust scaling factors appropriately
         setImage(img);
     }
+
+    // Getters and Setters
+    public String getBarrelImage() 
+    {
+        return barrelImage;
+    }
+
+    public void setBarrelImage(String barrelImage) 
+    {
+        this.barrelImage = barrelImage;
+        setImageScaled(barrelImage);
+    }
+
+    public long getTimeTouching() 
+    {
+        return timeTouching;
+    }
+
+    public void setTimeTouching(long timeTouching) 
+    {
+        this.timeTouching = timeTouching;
+    }
 }
- 

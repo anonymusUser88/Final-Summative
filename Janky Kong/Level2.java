@@ -11,7 +11,8 @@ public class Level2 extends World {
 
         addObject(new DK(), 200, 150 - 75); // DK
 
-        // top left
+        // top left floor
+        //The 1 makes it so the barrels move to the right
         addObject(new Floor(1, -20), 125, 150);
         addObject(new Floor(1, -20), 25, 150);
         addObject(new Floor(1, -20), 225, 150);
@@ -23,6 +24,8 @@ public class Level2 extends World {
         addObject(new Floor(1, -20), 825, 150 + 35);
 
         // top right
+        //The -1 makes it so the barrels move to the left
+        //The -20 and -27 is how much of a jump mario and luigi are able to get on these platforms
         addObject(new Floor(-1, -27), 1000, 425);
         addObject(new Floor(-1, -20), 900, 425 + 5);
         addObject(new Floor(-1, -20), 800, 425 + 10);
@@ -33,7 +36,7 @@ public class Level2 extends World {
         addObject(new Floor(-1, -20), 300, 425 + 35);
         addObject(new Floor(-1, -20), 200, 425 + 40);
 
-        // 3rd row
+        // Middle left floor, 3rd row from top
         addObject(new Floor(1, -27), 50, 700 + 5);
         addObject(new Floor(1, -20), 150, 700 + 10);
         addObject(new Floor(1, -20), 250, 700 + 15);
@@ -44,7 +47,7 @@ public class Level2 extends World {
         addObject(new Floor(1, -20), 750, 700 + 40);
         addObject(new Floor(1, -20), 850, 700 + 45);
 
-        // bottom left
+        //Bottom row
         addObject(new Floor(-1, -27), 50, 910);
         addObject(new Floor(-1, -20), 150, 910);
         addObject(new Floor(-1, -20), 250, 910);
@@ -57,10 +60,10 @@ public class Level2 extends World {
         addObject(new Floor(-1, -20), 950, 910);
         addObject(new Floor(-1, -20), 1050, 910);
 
-        //First Ladder
+        //First Ladder, the one on the right
         addObject(new Ladder(), 700, 830);
 
-        //Second Ladder
+        //Second Ladder, made from two sprites, the one on the left
         addObject(new Ladder(), 200, 560);
         addObject(new Ladder(), 200, 592);
 
@@ -68,9 +71,9 @@ public class Level2 extends World {
         addObject(new Ladder(), 800, 280);
         addObject(new Ladder(), 800, 312);
 
-        addObject(new OilBarrel(), 850, 640); // mario
-        addObject(new Mario(), 125, 850); // mario
-        addObject(new Princess(), 60, 170 - 75); // princess
-        addObject(new Luigi(), 150, 850); // luigi
+        addObject(new OilBarrel(), 850, 640); // Adds oil barrel
+        addObject(new Mario(), 125, 850); // Adds mario
+        addObject(new Princess(), 60, 170 - 75); // Adds Princess peach
+        addObject(new Luigi(), 150, 850); // Adds luigi
     }
 }

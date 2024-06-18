@@ -1,48 +1,68 @@
 import greenfoot.*;
+
 /**
- * Write a description of class OilBarrel here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * OilBarrel Class
+ * June 17, 2024
  */
 public class OilBarrel extends Actor {
-    String currentOilBarrel = "OilBarrel1.png";
-    long lastAnimationTime = 0;
-    
+    private String currentOilBarrel = "OilBarrel1.png";
+    private long lastAnimationTime = 0;
+
     public OilBarrel() {
-    setImageScaled(currentOilBarrel);
+        this.setImageScaled(currentOilBarrel);
     }
 
     public void act() {
-        setImageScaled(currentOilBarrel);
-        System.out.println(System.currentTimeMillis() - lastAnimationTime > 30);
-        if(System.currentTimeMillis() - lastAnimationTime > 50) {
-            if(currentOilBarrel.equals("OilBarrel1.png")) {
-                currentOilBarrel = "OilBarrel2.png";
-            }  else if(currentOilBarrel.equals("OilBarrel2.png")) {
-                currentOilBarrel = "OilBarrel3.png";
-            }  else if(currentOilBarrel.equals("OilBarrel3.png")) {
-                currentOilBarrel = "OilBarrel4.png";
-            } else if(currentOilBarrel.equals("OilBarrel4.png")) {
-                currentOilBarrel = "OilBarrel5.png";
-            } else if(currentOilBarrel.equals("OilBarrel5.png")) {
-                currentOilBarrel = "OilBarrel2.png";
-            }
-            lastAnimationTime = System.currentTimeMillis();
+        this.setImageScaled(currentOilBarrel); // Sets the current image
+        if (System.currentTimeMillis() - this.lastAnimationTime > 50) { // Adds animation, the pic changes every 50 milliseconds
+            this.updateCurrentOilBarrel();
+            this.lastAnimationTime = System.currentTimeMillis();
         }
-        
-         Barrel f = (Barrel)getOneIntersectingObject(Barrel.class);
-         
-         if(isTouching(Barrel.class)) {
-             if(f.barrelImage.equals("barrel2.png")) {
-                 getWorld().addObject(new Fire(), getX(), getY());
-             }
-         }
+
+        if (this.isTouching(Barrel.class)) { // Checks if any barrel touches the oil barrel
+            Barrel b = (Barrel) getOneIntersectingObject(Barrel.class); // Get the barrel object that is touching
+
+            if (b.getBarrelImage().equals("barrel2.png")) { // Checks if it is the special barrel that is touching
+                getWorld().addObject(new Fire(), this.getX(), this.getY()); // If it is then the fire is spawned on top of the barrel
+            }
+        }
     }
 
-    private void setImageScaled(String image) {
+    private void updateCurrentOilBarrel() {
+        if (this.currentOilBarrel.equals("OilBarrel1.png")) {
+            this.currentOilBarrel = "OilBarrel2.png";
+        } else if (this.currentOilBarrel.equals("OilBarrel2.png")) {
+            this.currentOilBarrel = "OilBarrel3.png";
+        } else if (this.currentOilBarrel.equals("OilBarrel3.png")) {
+            this.currentOilBarrel = "OilBarrel4.png";
+        } else if (this.currentOilBarrel.equals("OilBarrel4.png")) {
+            this.currentOilBarrel = "OilBarrel5.png";
+        } else if (this.currentOilBarrel.equals("OilBarrel5.png")) {
+            this.currentOilBarrel = "OilBarrel2.png";
+        }
+    }
+
+    private void setImageScaled(String image) { // Takes in an image and spits out the image resized
         GreenfootImage img = new GreenfootImage(image);
         img.scale(img.getWidth() / 4, img.getHeight() / 4);
         setImage(img);
     }
+
+    // Getters and Setters
+    public String getCurrentOilBarrel() {
+        return currentOilBarrel;
+    }
+
+    public void setCurrentOilBarrel(String currentOilBarrel) {
+        this.currentOilBarrel = currentOilBarrel;
+    }
+
+    public long getLastAnimationTime() {
+        return lastAnimationTime;
+    }
+
+    public void setLastAnimationTime(long lastAnimationTime) {
+        this.lastAnimationTime = lastAnimationTime;
+    }
 }
+

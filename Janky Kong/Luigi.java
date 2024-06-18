@@ -12,7 +12,7 @@ public class Luigi extends Mario
     "luigi_jump_right.png", "luigi_left.png", "luigi_left_2.png", "luigi_left_3.png", "luigi_right.png",
     "luigi_right_2.png", "luigi_right_3.png"};
     String currentImage = images[0];
-    int lives = 5;
+    int lives = 3;
     boolean isAlive = true; // tracks whether the player is alive
     
     /**

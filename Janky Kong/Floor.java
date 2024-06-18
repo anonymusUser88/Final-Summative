@@ -6,13 +6,8 @@ import greenfoot.*;
  */
 public class Floor extends Actor
 {
-    /**
-     * Act - do whatever the Floor wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    
-    int direction; // direction that the barrel rolls
-    int jumpHeight; // the height that mario can jump
+    private int direction; // direction that the barrel rolls
+    private int jumpHeight; // the height that mario can jump
     
     public Floor(int direction, int jumpHeight)
     {
@@ -21,15 +16,32 @@ public class Floor extends Actor
         scaleImage();
     }
     
-    public void act() 
-    {
-        
-    }    
-    
     public void scaleImage() 
     {
         GreenfootImage image = getImage();  
         image.scale(100, 30);
         setImage(image);
     }
+
+    // Getters and Setters
+    public int getDirection() 
+    {
+        return direction;
+    }
+
+    public void setDirection(int direction) 
+    {
+        this.direction = direction;
+    }
+
+    public int getJumpHeight() 
+    {
+        return jumpHeight;
+    }
+
+    public void setJumpHeight(int jumpHeight) 
+    {
+        this.jumpHeight = jumpHeight;
+    }
 }
+

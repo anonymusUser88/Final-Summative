@@ -1,5 +1,5 @@
 import greenfoot.*;
-
+import java.awt.Color;
 /**
  * Mario Class
  * June 15, 2024
@@ -76,7 +76,7 @@ public class Mario extends Actor
                 if(Greenfoot.isKeyDown(u) && !this.isJumping) 
                 {
                     this.isJumping = true;
-                    this.ySpeed = f.jumpHeight;
+                    this.ySpeed = f.getJumpHeight();
 
                     // Determine jump direction based on current image
                     if (this.currentImage.contains("left")) 
@@ -179,7 +179,7 @@ public class Mario extends Actor
         {
             this.currentImage = i[1];
         }
-        
+
         if (isTouching(Ladder.class) && Greenfoot.isKeyDown(u)) {
             setLocation(getX(), getY() - 2);
 

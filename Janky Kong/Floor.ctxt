@@ -1,10 +1,16 @@
 #BlueJ class context
 comment0.target=Floor
-comment0.text=\r\n\ Floor\ class\r\n\ June\ 12,\ 2024\r\n
+comment0.text=\n\ Floor\ class\n\ June\ 12,\ 2024\n
 comment1.params=direction\ jumpHeight
 comment1.target=Floor(int,\ int)
 comment2.params=
-comment2.target=void\ act()
+comment2.target=void\ scaleImage()
 comment3.params=
-comment3.target=void\ scaleImage()
-numComments=4
+comment3.target=int\ getDirection()
+comment4.params=direction
+comment4.target=void\ setDirection(int)
+comment5.params=
+comment5.target=int\ getJumpHeight()
+comment6.params=jumpHeight
+comment6.target=void\ setJumpHeight(int)
+numComments=7

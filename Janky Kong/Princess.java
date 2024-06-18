@@ -1,64 +1,100 @@
 import greenfoot.*;
 
 /**
- * Write a description of class Princess here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Princess Class
+ * June 17, 2024
  */
 public class Princess extends Actor
 {
-    /**
-     * Act - do whatever the Princess wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private long timeSinceLastAnimation = 0;
+    private long timeSinceHelpAnimation = 0;
+
     public void act() 
     {
+        DK d = getDK();
 
-        long TimeSinceLastAnimation = 0;
-        long TimeSinceHelpAnimation = 0;
-        
-        DK d = getWorld().getObjects(DK.class).get(0); // gets the DK object
-
-        if(d.playersWon == false)
+        if(!d.getPlayersWon())
         {
-            if(System.currentTimeMillis() - TimeSinceLastAnimation > 1000)
-            {
-                setImageScaled("Princess_Peach_.png",17);
-                if(DK.level == 1) {
-                    setLocation(60, 168);
-                } else if(DK.level == 2) {
-                    setLocation(60, 168 - 75);
-                }
-                if(System.currentTimeMillis() - TimeSinceHelpAnimation > 1500){
-                    TimeSinceHelpAnimation = System.currentTimeMillis();
-                    TimeSinceLastAnimation = System.currentTimeMillis();
-                    if(DK.level == 1) {
-                        setLocation(98, 152);
-                    } else if(DK.level == 2) {
-                        setLocation(98, 152 - 75);
-                    }
-                    setImage("princess_peach_help.png");
-
-                }
-
-            } else{
-                setImageScaled("Princess_Peach_.png",17);
-                if(DK.level == 1) {
-                    setLocation(60, 168);
-                } else if(DK.level == 2) {
-                    setLocation(60, 168 - 75);
-                }
-
-            }
-
+            this.handleAnimation();
         }
     }
 
-    private void setImageScaled(String image,int ScaleValue) {
-        GreenfootImage img = new GreenfootImage(image);
-        img.scale(img.getWidth() / ScaleValue, img.getHeight() / ScaleValue);
-        setImage(img);
+    private DK getDK()
+    {
+        return getWorld().getObjects(DK.class).get(0); // gets the DK object
+    }
 
+    private void handleAnimation()
+    {
+        if(System.currentTimeMillis() - timeSinceLastAnimation > 1000)
+        {
+            this.setImageScaled("Princess_Peach_.png", 17);
+            this.updateLocation();
+
+            if(System.currentTimeMillis() - this.timeSinceHelpAnimation > 1500)
+            {
+                this.timeSinceHelpAnimation = System.currentTimeMillis();
+                this.timeSinceLastAnimation = System.currentTimeMillis();
+                this.updateHelpLocation();
+                this.setImage("princess_peach_help.png");
+            }
+        }
+        else
+        {
+            this.setImageScaled("Princess_Peach_.png", 17);
+            this.updateLocation();
+        }
+    }
+
+    private void updateLocation()
+    {
+        if(DK.getLevel() == 1) 
+        {
+            this.setLocation(60, 168);
+        } 
+        else if(DK.getLevel() == 2) 
+        {
+            this.setLocation(60, 168 - 75);
+        }
+    }
+
+    private void updateHelpLocation()
+    {
+        if(DK.getLevel() == 1) 
+        {
+            this.setLocation(98, 152);
+        } 
+        else if(DK.getLevel() == 2) 
+        {
+            this.setLocation(98, 152 - 75);
+        }
+    }
+
+    private void setImageScaled(String image, int scaleValue) 
+    {
+        GreenfootImage img = new GreenfootImage(image);
+        img.scale(img.getWidth() / scaleValue, img.getHeight() / scaleValue);
+        setImage(img);
+    }
+
+    // Getters and Setters
+    public long getTimeSinceLastAnimation() 
+    {
+        return timeSinceLastAnimation;
+    }
+
+    public void setTimeSinceLastAnimation(long timeSinceLastAnimation) 
+    {
+        this.timeSinceLastAnimation = timeSinceLastAnimation;
+    }
+
+    public long getTimeSinceHelpAnimation() 
+    {
+        return timeSinceHelpAnimation;
+    }
+
+    public void setTimeSinceHelpAnimation(long timeSinceHelpAnimation) 
+    {
+        this.timeSinceHelpAnimation = timeSinceHelpAnimation;
     }
 }
