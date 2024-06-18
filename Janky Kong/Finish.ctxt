@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=Finish
+<<<<<<< Updated upstream
 comment0.text=\n\ Write\ a\ description\ of\ class\ Finish\ here.\n\ June\ 4,\ 2024\n
 comment1.params=
 comment1.target=Finish()
@@ -9,3 +10,10 @@ comment2.target=void\ WinScreen()
 comment3.params=
 comment3.target=void\ LoseScreen()
 numComments=4
+=======
+comment0.text=\n\ Write\ a\ description\ of\ class\ Finish\ here.\n\ June\ 15,\ 2024\n
+comment1.params=
+comment1.target=Finish()
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Finish.\n
+numComments=2
+>>>>>>> Stashed changes

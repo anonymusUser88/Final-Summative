@@ -1,6 +1,10 @@
 #BlueJ class context
 comment0.target=BackGround1
+<<<<<<< Updated upstream
 comment0.text=\n\ June\ 6,\ 2024\n\ ICS\ 4U1\n\ Janky\ Kong\n
+=======
+comment0.text=\n\ June\ 17,\ 2024\n\ ICS\ 4U1\n\ Janky\ Kong\n
+>>>>>>> Stashed changes
 comment1.params=
 comment1.target=BackGround1()
 comment1.text=\n\ Constructor\ for\ objects\ of\ class\ BackGround1.\n

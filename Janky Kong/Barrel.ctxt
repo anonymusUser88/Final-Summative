@@ -1,6 +1,10 @@
 #BlueJ class context
 comment0.target=Barrel
+<<<<<<< Updated upstream
 comment0.text=\n\ Write\ a\ description\ of\ class\ Barrel\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+=======
+comment0.text=\n\ Barrel\ Class\n\ June\ 17,\ 2024\n
+>>>>>>> Stashed changes
 comment1.params=barrelImage
 comment1.target=Barrel(java.lang.String)
 comment2.params=
