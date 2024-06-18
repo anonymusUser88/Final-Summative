@@ -1,4 +1,5 @@
 import greenfoot.*;
+
 /**
  * DK Class
  * June 17, 2024
@@ -8,9 +9,10 @@ public class DK extends Actor
     long lastTimeSinceBarrelThrown; // throwing the barrel
     long lastTimeSinceDKMoves; // animation
     int randomNum = Greenfoot.getRandomNumber(15) + 1;
-    int Yshift = 10; // used in gameover screen to shift dk
+    int Yshift = 50; // used in gameover screen to shift dk
     Boolean playersWon = false;
     long TimeofDeath;
+    static int level = 1;
 
     public DK()
     {
@@ -19,18 +21,26 @@ public class DK extends Actor
 
     public void act() 
     {
+        System.out.println(level);
+        
         Mario m = getWorld().getObjects(Mario.class).get(0); // gets the mario object
         Luigi l = getWorld().getObjects(Luigi.class).get(0); // gets the luigi object
 
-        if(isTouching(Mario.class) || isTouching(Luigi.class)) // if either of the players reach donkey kong
+        if((isTouching(Mario.class) || isTouching(Luigi.class)) && level == 1) // if either of the players reach donkey kong
         {
+            Level2 level2 = new Level2();
+            Greenfoot.setWorld(level2);
+            level++;
+        } 
+        
+        if ((isTouching(Mario.class) || isTouching(Luigi.class)) && level == 2) {
             TimeofDeath = System.currentTimeMillis();
             playersWon = true;
-            getWorld().addObject(new Heart(), 120, 100);
             getWorld().showText("YOU WIN", 750, 600);
             GreenfootSound music = new GreenfootSound("Donkey Kong Arcade Music - Round Clear.mp3");
             music.play();
         }
+
         if(getY()>770)
         {
             Greenfoot.stop();

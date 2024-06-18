@@ -15,6 +15,7 @@ public class BackGround1 extends World
     public BackGround1()
     {    
         super(1050, 900, 1);
+        DK.level = 1;
         
         addObject(new DK(), 200, 150); // DK
 
